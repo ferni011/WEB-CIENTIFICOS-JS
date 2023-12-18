@@ -1,0 +1,223 @@
+/*Reglas para el cuerpo de la web */
+body {
+    border: 4px solid #050503;/*Borde de la pagina en negro*/
+    border-radius: 1vh;/*Para redondear las esquinas*/
+    font-family:Arial, Helvetica, sans-serif;/*Fuente de la página*/
+    width: fit-content;/*Para que el ancho quepa en la página siempre*/
+    background-color: white;/*Color del fondo*/
+}
+
+
+/*Reglas para las imagenes*/
+img {
+    width: 100%;
+    /*Ancho*/
+    height: 100%;
+    /*Alto*/
+    object-fit: contain;
+    /*Para que quepa la imagen*/
+}
+
+
+/*Reglas para la información de contacto,ponemos la fuente en negrita*/
+address {
+    font-weight: bold;
+}
+
+/*Reglas para el pie de página*/
+footer {
+    /*Centramos el texto y ponemos el color deseado*/
+    text-align: center;
+    background-color: white;
+}
+
+/*Reglas para el lateral de la web*/
+aside {
+    /*Usamos esta opción para que no se muestre el lateral*/
+    display: none;
+}
+
+/*Reglas para h1*/
+h1 {
+    /*Color negro*/
+    color:#050503;
+    /*Centramos el texto*/
+    text-align: center;
+    /*Tamaño de fuente y en negrita*/
+    font-size: 40px;
+    font-weight: bold;
+    /* margen derecho interno de 2em del ancho del contenedor */
+    padding-right: 2em;
+}
+
+/*Reglas para h2,h3,h4 para ponerles une stilo de letra normal*/
+h2,h3,h4{
+    font-weight: normal;
+}
+
+/* Estilo del encabezado de la página para dispositivos móviles */
+@media (max-width: 668px) {
+    h1 {
+      font-size: 12px;
+      padding-top: 0.5em;
+
+    }
+  }
+
+/*Reglas para la cabecera de la página*/
+header {
+    /*Color verde*/
+    background-color: white;
+    /*Usamos grid*/
+    display: grid;
+    /*Definimos una sola columna con ancho máximo*/
+    grid-template-columns: repeat(1, 1fr);
+    /*Definimos una sola fila con altura fija de 20vh*/
+    grid-template-rows: 20vh;
+}
+
+
+/*Definimos normas para principal*/
+#principal {
+    /*Usamos un grid*/
+    display: grid;
+    /*Se ocupa el ancho máximo*/
+    grid-template-columns: 100%;
+    /*Color de fondo*/
+    background-color: white;
+    /*Bordes*/
+    border-bottom: solid 2px #050503;
+    border-top: solid 2px #050503;
+    height: min-content;
+}
+
+/*Reglas para main*/
+main {
+    /*Usamos un grid*/
+    display: grid;
+    /*Espacio de 2vh*/
+    gap: 2vh;
+    /*Alineamos el texto al centro*/
+    text-align: center;
+    /*Alineamos el contenido al centro*/
+    align-content: center;
+    /*Dividimos el ancho del grid en 2 partes del mismo tamaño, uno para la biografia y otra para las imagenes*/
+    grid-template-columns: 1.5fr 1fr;
+    grid-column-gap: 40px;
+    /*El alto automático*/
+    grid-auto-rows: max-content;
+    /*Margen de 4em*/
+    padding: 4em;
+    /*Color blanco de fondo*/
+    background-color: white;
+    /*Redondeamos el borde*/
+    border-radius: 0.5vh;
+    /*Definimos un borde sólido negro*/
+    border-bottom: solid 2px #050503;
+}
+
+
+
+/*Normas para el grid-container*/
+.grid-container {
+    /*Usamos grid*/
+    display: grid;
+    /*Dividimos el espacio de la pagina para darle un tamaño a  la parte de los cientificos*/
+    grid-template-columns: 1fr;
+}
+
+
+
+/*Normas para contenido*/
+.contenido {
+    /*Espacio a la derecha de 0.5em*/
+    padding-right: 0.5em;
+    /*Que el contenido se ajuste*/
+    text-align: center;
+}
+
+/*Normas para los botones*/
+#botones {
+    /*Usamos esta opción para que no se muestren los botones del menu*/
+    display: none;
+}
+
+/*Normas para el logo*/
+#logo {
+    /*Ponemos la foto a la derecha*/
+    float: right;
+    /*Le damos una altura a la foto*/
+    height: 10vh;
+    /*Dejamos espacio superior y por la derecha*/
+    padding-top: 0.5em;
+    padding-right: 2.5em;
+}
+
+/*Normas para subrayado*/
+.subrayado {
+    /*Nos sirve para quitar el color y el subrayado a los enlaces*/
+    color: #050503;
+    text-decoration: none;
+}
+
+
+/*Hacemos que las fotos se pongan en la derecha*/
+#fotos {
+    float: right;
+    display: grid;
+    grid-template-rows: min-content;
+    gap: 20px;
+
+}
+
+/*Ajustamos el ancho y el alto de cada foto*/
+#foto1{
+    width: 30vw;
+    height: 50vh;
+
+}
+
+/*Distancia del pie de foto*/
+#piedefoto{
+    padding-top: 3%;
+}
+
+/*Hacemos que la información se ponga en la izquierda*/
+#informacion {
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*Separamos las líneas de la biografía para que ocupe más espacio*/
+#biografia{
+    line-height: 2.5;
+}
+
+
+/*Usamos esta norma para que los enlaces no tengan color azul ni subrayado*/
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/*Normas para las redes del científico*/
+#redes-einstein {
+    /*Usamos esta opción para que no se muestren las redes sociales*/
+    display: none;
+}
+
+.botones-container {
+    display: none
+}
+
+#botonesabajo {
+
+    display: none;
+}
+
+/*Para no mostrar la barra de búsqueda */
+.barra{
+    display: none;
+}

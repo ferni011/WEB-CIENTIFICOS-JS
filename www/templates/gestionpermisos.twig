@@ -1,0 +1,66 @@
+{% extends "plantilla.twig" %}
+
+{% block estiloarchivo %}
+    <link href="css/estilo-anadir-editar.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block principal%}
+<head>
+    <title>Cambiar Tipo de Usuario</title>
+</head>
+<body>
+<main>
+    <h2>Cambiar Tipo de Usuario</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <form action="gestionpermisos" method="POST">
+            <label for="usuario">Seleccionar Usuario:</label>
+            <br>
+            
+            <select name="usuario" id="usuario">
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.Usuario }}">{{ usuario.Usuario }} es {{usuario.TipoUsuario}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <br>
+            <br>
+            <br>
+            <label for="tipoUsuario">Su nuevo tipo de Usuario es:</label>
+            <br>
+            <br>
+            <br>
+            <select name="tipoUsuario" id="tipoUsuario">
+                <option value="REGISTRADO">Registrado</option>
+                <option value="MODERADOR">Moderador</option>
+                <option value="GESTOR">Gestor</option>
+                <option value="SUPERUSUARIO">Superusuario</option>
+            </select>
+
+
+
+            <button type="submit">Cambiar Tipo de Usuario</button>
+        </form>
+
+    <br>
+    {% if errores %}
+        <h3>Errores:</h3>
+        <ul>
+            {% for error in errores %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</main>
+</body>
+
+{% endblock %}
+
+{% block botones %}   
+     <div class="boton">
+         <a href="../editarusuario.php?usuario={{ usuariosesion }}" class="subrayado">Mi cuenta</a>
+    </div>
+{% endblock %}

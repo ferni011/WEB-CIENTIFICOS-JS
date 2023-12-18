@@ -1,0 +1,89 @@
+{% extends "plantilla.twig" %}
+
+{% block estiloarchivo %}
+<link href="css/estilo-anadir-editar.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block principal%}
+<head>
+    <title>Editar Científico</title>
+</head>
+<body>
+<main>
+    <h2>Editar Científico</h2>
+    <form action="editarcientifico.php?cientifico={{ id }}" method="POST" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ cientifico.nombre }}" required>
+        <br>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ cientifico.fechanac }}" required>
+        <br>
+        <label for="lugar">Lugar:</label>
+        <input type="text" id="lugar" name="lugar" value="{{ cientifico.lugar }}" required>
+        <br>
+        <label for="biografia">Biografía:</label>
+        <textarea id="biografia" name="biografia" required>{{ cientifico.biografia }}</textarea>
+        <br>
+        <label for="web">Sitio Web:</label>
+        <input type="text" id="web" name="web" value="{{ cientifico.web }}">
+        <br>
+        <label for="facebook">Facebook:</label>
+        <input type="text" id="facebook" name="facebook" value="{{ cientifico.facebook }}">
+        <br>
+        <label for="twitter">Twitter:</label>
+        <input type="text" id="twitter" name="twitter" value="{{ cientifico.twitter }}">
+        <br>
+        <label for="fecha_muerte">Fecha de Muerte:</label>
+        <input type="date" id="fecha_muerte" name="fecha_muerte" value="{{ cientifico.fechamuerte }}">
+        <br>
+        <input type="file" id="foto_portada" name="foto_portada">
+        <br>
+        <label for="descripcionPortada">Descripción foto portada:</label>
+        <input type="text" id="descripcionPortada" name="descripcionPortada">
+        <br>
+        Añade máximo dos fotos extra
+        <br>
+        <label for="fotoextra1">Foto Extra 1:</label>
+        <input type="file" id="fotoextra1" name="fotoextra1">
+        <br>
+        <label for="descripcion_foto_extra_1">Descripción foto extra 1:</label>
+        <input type="text" id="descripcion_foto_extra_1" name="descripcion_foto_extra_1">
+        <br>
+        <label for="fotoextra2">Foto Extra 2:</label>
+        <input type="file" id="fotoextra2" name="fotoextra2">
+        <br>
+        <label for="descripcion_foto_extra_2">Descripción foto extra 2:</label>
+        <input type="text" id="descripcion_foto_extra_2" name="descripcion_foto_extra_2">
+        <br>
+        <br>
+        Para añadir hashtags al cientifico, introducelos separados por una coma
+        <br>
+        <br>
+        <label for="hashtags">Hashtags:</label>
+        <input type="text" id="hashtags" name="hashtags" required>
+        <br>
+        <label for="publicado">Publicado:</label>
+        <input type="checkbox" id="publicado" name="publicado" {% if cientifico.publicado == 1 %}checked{% endif %}>
+        <br>
+        
+        <input type="submit" value="Guardar Cambios">
+    </form>
+
+    {% if errores %}
+        <h3>Errores:</h3>
+        <ul>
+            {% for error in errores %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</main>
+</body>
+{% endblock %}
+
+{% block botones %}   
+     <div class="boton">
+         <a href="../editarusuario.php?usuario={{usuario.ID}}" class="subrayado">Mi cuenta</a>
+    </div>
+{% endblock %}

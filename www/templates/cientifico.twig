@@ -1,0 +1,185 @@
+{% extends "plantilla.twig" %}
+
+{% block estiloarchivo %}
+<link href="../{{estilo}}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+
+
+{% block comentarios %}
+<!--CREAMOS LOS COMENTARIOS DEL CIENTIFICO-->
+{% if muestracomentarios %}
+    {% if session['TipoUsuario']=="REGISTRADO" or session['TipoUsuario']=="SUPERUSUARIO" or session['TipoUsuario']=="MODERADOR" or session['TipoUsuario']=="GESTOR" %}
+        <button id="boton-panel"><img src="../logos/comentarios.png" alt="Mostrar/Ocultar comentarios"></button>
+            <!--SECCION QUE CONTIENE LOS COMENTARIOS PREDEFINIDOS Y EL FORMULARIO PARA INTRODUCIR UNO NUEVO-->
+            <div id="panel-lateral">
+
+                <!--LA DIVISION SECCION COMENTARIOS CONTIENE LOS DOS COMENTARIOS PREDEFINIDOS-->
+                <div class="seccioncomentarios">
+
+                    {% for i in comentarios %}
+                    <div class="comentariopredefinido">
+                        <div class="nombrepredefinido">
+                            <h5>{{i['nombre']}}</h5>
+                        </div>
+                        <div class="emailpredefinido">
+                            {{i['email']}}
+                        </div>
+                        <div class="fechapredefinida">
+                            {{i['fecha']}}
+                        </div>
+                        <div class="textopredefinido">
+                            {{i['texto']}}
+                        </div>
+                        {% if i['Editado']==1 %}
+                            Editado por el moderador
+                        {% endif %}
+                         {% if session['TipoUsuario']=="SUPERUSUARIO" or session['TipoUsuario']=="MODERADOR" or session['TipoUsuario']=="GESTOR" %}
+                            <form action="../borrarcomentario.php" method="POST">
+                                <input type="hidden" name="idComentario" value="{{ i['IDComentario'] }}">
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')"><img src="../logos/borrar.png" alt="Borrar comentario" class="botoneliminar"></button>
+                            </form>
+                            <form action="../editarcomentario.php" method="POST">
+                                <input type="hidden" name="idComentario" value="{{ i['IDComentario'] }}">
+                                <textarea name="textoEditado" placeholder="Editar comentario">{{ i['texto'] }}</textarea>
+                                <button type="submit"><img src="../logos/editar.png" alt="Editar comentario" class="botoneliminar"></button>
+                            </form>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+
+                
+                <!--FORMULARIO CON EL QUE PODEMOS INTRODUCIR UN NUEVO COMENTARIO EN LA WEB-->
+                
+                <div id="escribecomentario">
+                    <h5>Nuevo comentario</h5>
+                    <form action="../cientifico/{{idcient}}" method="POST">
+                        <label id="lcomentario" for="comentario">Comentario:
+                            <textarea rows="4" id="comentario" name="comentario" placeholder="Escribe aquí tu comentario"></textarea>
+                        </label>
+                        <!-- BOTON QUE AL PULSARLO ENVIA EL COMENTARIO A LA WEB -->
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+                
+                 
+            </div>
+    {% endif %}
+            
+{% endif %}
+{% endblock %}
+
+
+
+{% block principal %}
+<!--DEFINIMOS LA INFORMACION DE LOS CIENTIFICOS-->
+<!--LA SECCIÓN PRINCIPAL QUE CONTIENE A LOS CIENTIFICOS EN EL MAIN-->
+<div id="principal">
+    <main>
+        <!--CREAMOS UNA ARTICLE DONDE TENDREMOS DISTINTAS SECCIONES CON EL NOMBRE,FECHA NAC Y MUERTE Y LA BIOGRAFIA, ADEMÁS DE UN ENLACE AL SITIO WEB DEL CIENTIFICO-->
+        <article id="informacion">
+        {% if  not cientifico['publicado'] %}
+            <h2>(NO PUBLICADO)</h2>
+        {% endif %}
+            <section id="nombre">
+                <h2>{{cientifico['nombre']}}</h2>
+            </section>
+            <section id="fechaylugar">
+                <h3>{{cientifico['fechanac']}} - {{cientifico['fechamuerte']}} <br> {{cientifico['lugar']}}</h3>
+            </section>
+            <section id="biografia">
+                <h4>
+                    {{cientifico['biografia']}}
+                </h4>
+
+                <p>Enlace al sitio <a href="{{cientifico['web']}}" target="_blank">web</a> oficial de
+                    {{cientifico['nombre']}}</p>
+            </section>
+
+
+        </article>
+
+
+        <section id="fotos">
+        {% for i in fotos %}
+        <!--APARTADO DONDE PONDREMOS LAS FOTOS DEL CIENTIFICO Y SU PIE DE FOTO-->
+            <div class="fotocientifico">
+                <div id="foto1">
+                    <img src="../{{i['ruta']}}" alt="{{i['descripcion']}}">
+                </div>
+
+                <div id="piedefoto">
+                    {{i['descripcion']}}
+                </div>
+            </div>
+        {% endfor %}
+        </section>
+
+
+
+    {% if session['TipoUsuario']=="SUPERUSUARIO" or session['TipoUsuario']=="GESTOR" %}
+    <div class="botones-container">
+        <!-- BOTON PARA EDITAR CIENTIFICO -->
+        <button id="botonesabajo"><a href="../editarcientifico.php?cientifico={{idcient}}" class="subrayadoboton"> Editar científico </a></button>
+
+
+        <!-- BOTON PARA AÑADIR CIENTIFICO -->
+        <button id="botonesabajo"><a href="../anadircientifico" class="subrayadoboton"> Añadir científico </a></button>
+
+         <!-- BOTON PARA BORRAR CIENTIFICO -->
+            <form action="../cientifico/{{idcient}}" method="POST">
+                <input type="hidden" name="idCientifico" value="{{ idcient }}">
+                <button type="submit" name="borrarCientifico" onclick="return confirm('¿Estás seguro de que deseas eliminar este científico?')" id="botonesabajo">Borrar Científico</button>
+            </form>
+    </div>
+    {% endif %}
+
+
+    </main>
+
+
+
+
+    <!--AQUÍ MOSTRAMOS EL LOGO DE FACEBOOK Y TWITTER QUE SI LO PINCHAMOS NOS LLEVA A LA WEB DEL CIENTIFICO, IMPRIMIR SIRVE PARA MANDARNOS A CIENTIFIC0-IMPRIMIR.HTML-->
+    <div id="redes-einstein">
+        <div>
+            <a href="{{cientifico['facebook']}}" target="_blank">
+                <img id="logosocial" src="../logos/facebook.png" alt="Facebook Einstein">
+            </a>
+        </div>
+
+        <div>
+            <a href="{{cientifico['twitter']}}" target="_blank">
+                <img id="logosocial" src="../logos/twitter.png" alt="Twitter Einstein">
+            </a>
+        </div>
+
+        <div>
+            <a href="{{idcient}}-imprimir" target="_blank">
+                <img id="logosocial" src="../logos/impresora.png" alt="Imprimir">
+            </a>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}
+
+{% block botones %}   
+    {% if boton %}
+        <div class="boton">
+            <a href="../editarusuario.php?usuario={{session.ID}}" class="subrayado">Mi cuenta</a>
+        </div>
+    {% else %}
+        <div class="boton">
+            <a href="../login" class="subrayado">Login</a>
+        </div>
+    {% endif %}
+{% endblock %}

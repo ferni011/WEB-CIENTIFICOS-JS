@@ -1,0 +1,65 @@
+  {% extends "plantilla.twig" %}
+
+  {% block estiloarchivo %}
+  <link href="css/estilo-anadir-editar.css" rel="stylesheet" type="text/css" />
+  {% endblock %}
+
+  {% block principal%}
+  <head>
+      <title>Editar Usuario</title>
+  </head>
+  <body>
+  <main>
+
+    <h3>INICIA SESIÓN</h3>
+    <form action="login.php?opc=login" method="post">
+      Nick: <input type="text" name="nick" /><br>
+      <br>
+      Password: <input type="password" name="contraseña" /><br>
+      <input type="submit" value="Loguearse" />
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h3>O BIEN REGÍSTRATE</h3>
+
+    <form action="login.php?opc=registro" method="post" onsubmit="return validarRegistro()">
+      Email: <input type="text" name="email" /><br>
+      <br>
+      Nick: <input type="text" name="nick" /><br>
+      <br>
+      Password: <input type="password" name="contraseña" /><br>
+      <input type="submit" value="Registrarse" />
+    </form>
+
+  <br>
+    {% if errores %}
+        <h3>Errores:</h3>
+        <ul>
+            {% for error in errores %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+
+    {% if mensaje %}
+     <h3>{{ mensaje }}</h3>
+    {% endif %}
+
+  </main>
+  </body>
+
+
+  {% endblock %}
+
+
+{% block botones %}   
+     <div class="boton">
+         <a href="../login.php" class="subrayado">Login</a>
+    </div>
+{% endblock %}

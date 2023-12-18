@@ -1,0 +1,37 @@
+# ACTIVAMOS LA REESCRITURA DE URL
+RewriteEngine On
+
+# HACEMOS QUE LA URL QUE CONTENGA CIENTIFICO/1-10 VAYA A CIENTIFICO.PHP?CIENTIFICO=1-10
+RewriteRule ^cientifico/([1-9]|10)$ cientifico.php?cientifico=$1 [L]
+
+# HACEMOS QUE CIENTIFICO/NUM-IMPRIMIR DONDE NUM NO ESTA ENTRE 1-10 VAYA A LA PAGINA DE ERROR
+RewriteRule ^cientifico/(?!([1-9]|10)-imprimir$[1-9]|10[1-9])-imprimir$ /404.php [L]
+
+# HACEMOS QUE CIENTIFICO/(1-10)-IMPRIMIR VAYA A CIENTIFICO.PHP?CIENTIFICO(1-10)&IMPRIMIR
+RewriteRule ^cientifico/([1-9]|10)-imprimir$ cientifico.php?cientifico=$1&imprimir=1 [NC,L]
+
+# HACEMOS QUE LOCALHOST/PORTADA VAYA A INDEX.PHP
+RewriteRule ^portada$ index.php [L]
+
+# HACEMOS QUE LOCALHOST/LOGIN VAYA A LOGIN.PHP
+RewriteRule ^login$ login.php [L]
+
+# HACEMOS QUE LOCALHOST/ANADIRCIENTIFICO VAYA A ANADIRCIENTIFICO.PHP
+RewriteRule ^anadircientifico$ anadircientifico.php [L]
+
+# HACEMOS QUE LOCALHOST/GESTIONPERMISOS VAYA A GESTIONPERMISOS.PHP
+RewriteRule ^gestionpermisos$ gestionpermisos.php [L]
+
+# HACEMOS QUE LOCALHOST/LISTACIENTIFICOS VAYA A LISTACIENTIFICOS.PHP
+RewriteRule ^listacientificos$ listacientificos.php [L]
+
+# HACEMOS QUE LOCALHOST/LISTACOMENTARIOS VAYA A LISTACOMENTARIOS.PHP
+RewriteRule ^listacomentarios$ listacomentarios.php [L]
+
+# HACEMOS QUE CIENTIFICO/OBTENERPALABRASCENSURADAS.PHP VAYA A LOCALHOST/OBTENERPALABRASCENSURADAS.PHP
+RewriteRule ^cientifico/obtenerpalabrascensuradas\.php$ /obtenerpalabrascensuradas.php [L,R=301]
+
+# CUANDO HAY UN ERROR 404 VA A 404.PHP
+ErrorDocument 404 /404.php
+
+RewriteRule ^login/registro$ login.php?opc=registro [L]

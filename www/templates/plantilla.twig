@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!--TITULO DE LA WEB-->
+    <title>Ciencia en Línea</title>
+    <!--PARA PODER USAR AJAX-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--SE CARGARÁ EL SCRIPT COMENTARIOS.JS-->
+    <script defer src="../js/comentarios.js"></script>
+    <!--LOGO DE LA WEB QUE APARECE EN LA PESTAÑA-->
+    <link rel="shortcut icon" href="../logos/logo-pequeno.png">
+    <!--DEFINIMOS UN BLOQUE PARA EL ESTILO-->
+    {% block estiloarchivo %}
+    <link href="css/estilo.css" rel="stylesheet" type="text/css" />
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!--DEFINIMOS UN BLOQUE COMENTARIOS->
+    {% block comentarios %}
+    {% endblock %}
+
+    <!--CABECERA DE LA PAGINA WEB DONDE APARECERA EL LOGO EL TITULO Y EL MENÚ-->
+    <header>
+        <!--DIV DONDE AGRUPAMOS EL LOGO Y EL TITULO-->
+        <div id="logoytitulo">
+            <!--LOGO DE LA PAGINA QUE NOS LLEVA AL INICIO SI LO PULSAMOS-->
+            <div id="logo">
+                <a href="../portada"><img src="../logos/logo-pequeno.png" alt="Logo del sitio web" id="logo"></a>
+            </div>
+
+            <!--TITULO DE LA PAGINA-->
+            <div>
+                <div>
+                    <h1>Ciencia en Línea</h1>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="botonesbarra">
+            <!--NAVEGACIÓN DE LAS DISTINTAS SECCIONES DE LA WEB-->
+            <nav id="botones">
+                <div class="boton">
+                    <a href="../portada" class="subrayado">Inicio</a>
+                </div>
+                <!--EL CODIGO ES PARA QUE EL BOTON NO HAGA NADA-->
+                <div class="boton">
+                    <a href="#" onclick="return false;" class="subrayado">Contacto</a>
+                </div>
+                <div class="boton">
+                    <a href="#" onclick="return false;" class="subrayado">FAQ</a>
+                </div>
+                {% block botones %}
+                {% endblock %}
+            </nav>
+
+            <div class="barra">
+                <form>
+                    <input type="text" name="keyword" id="keywordInput" placeholder="Buscar científicos">
+                </form>
+                <div id="resultadosContainer"></div>
+            </div>
+        </div>
+
+    </header>
+
+
+    <!--DIV QUE CONTIENE UN CONTENEDOR GRID CON LA SECCIÓN PRINCIPAL DE LA WEB Y CON LOS ENLACES DE LA PARTE AUXILIAR-->
+    <div class="grid-container">
+    <!--DEFINIMOS UN  BLOQUE PRINCIPAL-->
+        {% block principal %}
+
+        {% endblock %}
+
+
+        <!--SECCIÓN AUXILIAR CON LOS ENLACES DE INTERÉS-->
+        <aside>
+            <!--LATERALINTERES QUE INCLUYE EL TITULO DE ENLACES DE INTERES Y LOS ENLACES DE INTERES-->
+            <section class="lateralinteres">
+                <!--ENLACESDEINTERES NOS SIRVE PARA EL TÍTULO DE ESTOS-->
+                <div class="enlacesdeinteres">
+                    Enlaces de interés
+                </div>
+
+                <!--SECCIÓN DE ENLACES DE INTERÉS-->
+                <div id="enlace" class="contenido">
+                    <div>
+                        <!--TARGET=_BLANK SIRVE PARA ABRIR LA PAGINA EN OTRA PESTAÑA-->
+                        <a href="https://www.wikipedia.es" target="_blank">Wikipedia</a>
+                    </div>
+
+                    <div>
+                        <a href="https://www.sciencedirect.com/" target="_blank">ScienceDirect</a>
+                    </div>
+
+                    <div>
+                        <a href="https://www.plos.org/" target="_blank">Plos</a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.nature.com/" target="_blank">Nature</a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.sciencenews.org/" target="_blank">Science News</a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.livescience.com/" target="_blank">Live Science</a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.nationalgeographic.com/" target="_blank">National Geographic</a>
+                    </div>
+
+
+                    <div>
+                        <a href="https://www.nasa.gov/" target="_blank">NASA</a>
+                    </div>
+
+
+                </div>
+
+
+            </section>
+        </aside>
+    </div>
+
+    <!--PIE DE PÁGINA CON INFORMACIÓN DE CONTACTO-->
+    <footer>
+        <address>© 2023 Copyright - Fernando Pastrana Gómez - pastranafer@correo.ugr.es</address>
+    </footer>
+
+</body>
+
+
+</html>

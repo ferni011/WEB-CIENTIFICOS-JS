@@ -1,0 +1,40 @@
+{% extends "plantilla.twig" %}
+
+
+{% block principal %}
+<!--LA SECCIÓN PRINCIPAL QUE CONTIENE A LOS CIENTIFICOS EN EL MAIN-->
+<div id="principal">
+    <main>
+        {% for i in cientificos %}
+        <!--DISTINTOS ARTICULOS, UNO PARA CADA CIENTIFICO QUE APARECE EN LA WEB-->
+        <article class="cientifico">
+            <!--SECCION PARA EL NOMBRE DEL CIENTIFICO QUE LLEVA A CIENTIFICO.HTML-->
+            <section>
+                <a href="cientifico/{{i['IDCientifico']}}"><img src="{{i['FotoPortada']}}"></a>
+            </section>
+            <!--SECCION PARA EL NOMBRE DEL CIENTIFICO QUE LLEVA A CIENTIFICO.HTML-->
+            <section>
+                <!--LA CLASE SUBRAYADO SIRVE PARA QUITAR CON CSS EL SUBRAYADO Y EL COLOR AZUL-->
+                <a href="/cientifico={{i['IDCientifico']}}" class="subrayado">{{i['Nombre']}}</a>
+            </section>
+        </article>
+        {% endfor %}
+
+    </main>
+</div>
+
+
+{% endblock %}
+
+
+{% block botones %}   
+    {% if boton %}
+        <div class="boton">
+            <a href="../editarusuario.php?usuario={{session.ID}}" class="subrayado">Mi cuenta</a>
+        </div>
+    {% else %}
+        <div class="boton">
+            <a href="../login" class="subrayado">Login</a>
+        </div>
+    {% endif %}
+{% endblock %}

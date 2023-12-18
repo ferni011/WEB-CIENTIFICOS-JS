@@ -1,0 +1,95 @@
+{% extends "plantilla.twig" %}
+
+{% block estiloarchivo %}
+<link href="css/estilo-anadir-editar.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block principal%}
+<head>
+    <title>Editar Usuario</title>
+</head>
+<body>
+<main>
+    <h2>Editar Usuario</h2>
+    <form action="editarusuario.php?usuario={{IDusuario}}" method="POST">
+        <input type="hidden" name="usuarioID" value="{{ IDusuario }}">
+        
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" value="{{ usuario['Usuario'] }}">
+        <br>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ usuario['Email'] }}">
+        <br>
+        <br>
+        <label for="contrasena_nueva">Nueva Contraseña:</label>
+        <input type="password" id="contrasena_nueva" name="contrasena_nueva">
+        <br>
+        <br>
+        INTRODUCE TU CONTRASEÑA ACTUAL PARA ACTUALIZAR TUS DATOS
+        <br>
+        <br>
+        <label for="contrasena_actual">Contraseña Actual:</label>
+        <input type="password" id="contrasena_actual" name="contrasena_actual" required>
+        <br>
+        <br>
+        
+        <input type="submit" value="Guardar Cambios">
+    </form>
+
+    <div>
+            <form action="../logout.php" method="post">
+                <input type="submit" value="Cerrar sesión" />
+            </form>
+    </div>
+
+    {% if usuario['TipoUsuario']=="SUPERUSUARIO" or usuario['TipoUsuario']=="MODERADOR" or usuario['TipoUsuario']=="GESTOR" %}
+        <div>
+            <form action="../listacomentarios.php" method="post">
+                <input type="submit" value="Ver lista de comentarios" />
+            </form>
+        </div>
+    {% endif %}
+
+    {% if usuario['TipoUsuario']=="SUPERUSUARIO" or usuario['TipoUsuario']=="GESTOR" %}
+        <div>
+            <form action="../listacientificos.php" method="post">
+                <input type="submit" value="Ver lista de cientificos" />
+            </form>
+        </div>
+    {% endif %}
+
+    {% if usuario['TipoUsuario']=="SUPERUSUARIO"%}
+        <div>
+            <form action="../gestionpermisos" method="post">
+                <input type="submit" value="Gestionar permisos de usuario" />
+            </form>
+        </div>
+    {% endif %}
+
+
+    {% if errores %}
+        <h3>Errores:</h3>
+        <ul>
+            {% for error in errores %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+    </main>
+</body>
+{% endblock %}
+
+{% block botones %}   
+    {% if boton %}
+        <div class="boton">
+            <a href="#" class="subrayado">Mi cuenta</a>
+        </div>
+    {% else %}
+        <div class="boton">
+            <a href="../login.php" class="subrayado">Login</a>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "plantilla.twig" %}
+
+{% block estiloarchivo %}
+    <link href="css/estilo-anadir-editar.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block principal%}
+<head>
+    <title>Lista de Científicos</title>
+</head>
+<main>
+<h2><a href="listacientificos.php" class="subrayado">Listado de Cientificos</a></h2>
+<!-- Formulario de búsqueda por hashtag -->
+<form action="../listacientificos.php" method="POST">
+    <input type="text" name="hashtag" placeholder="Buscar científico por hashtag">
+    <button type="submit">Buscar</button>
+</form>
+
+<body>
+    <ul>
+        {% for cientifico in cientificos %}
+            <li>
+                <h3>{{cientifico.IDCientifico}}</h3>
+                <h3>{{ cientifico.Nombre }}</h3>
+                <p>Fecha de Nacimiento: {{ cientifico.FechaNacimiento }}</p>
+                <p>Fecha de Muerte: {{cientifico.FechaMuerte}}</p>
+                <p>Lugar: {{ cientifico.Lugar }}</p>
+                <p>Biografía: {{ cientifico.Biografia }}</p>
+                <p>Sitio Web: <a href="{{cientifico.Web}}">{{cientifico.Web}}</a></p>
+                <p>Facebook: <a href="{{cientifico.Facebook}}">{{cientifico.Facebook}}</a></p>
+                <p>Twitter: <a href="{{cientifico.Twitter}}">{{cientifico.Twitter}}</a></p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</main>
+{% endblock %}
+
+{% block botones %}   
+     <div class="boton">
+         <a href="." class="subrayado">Mi cuenta</a>
+    </div>
+{% endblock %}

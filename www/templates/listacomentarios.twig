@@ -1,0 +1,69 @@
+{% extends "plantilla.twig" %}
+
+{% block estiloarchivo %}
+    <link href="css/estilo-anadir-editar.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block principal%}
+<head>
+    <title>Listado de Comentarios</title>
+</head>
+<main>
+<body>
+    <h2><a href="listacomentarios.php" class="subrayado">Listado de Comentarios</a></h2>
+    <!-- Formulario de búsqueda -->
+    <form action="../listacomentarios.php" method="POST">
+        <input type="text" name="keyword" placeholder="Buscar comentario por keyword">
+        <button type="submit">Buscar</button>
+    </form>
+    <br>
+
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Texto</th>
+            <th>Fecha</th>
+            <th>IDComentario</th>
+            <th>IDCientifico</th>
+            <th>Editado</th>
+
+                <th>Acciones</th>
+
+        </tr>
+        {% for comentario in comentarios %}
+            <tr>
+                <td>{{ comentario.Nombre }}</td>
+                <td>{{ comentario.Email }}</td>
+                <td>{{ comentario.Texto }}</td>
+                <td>{{ comentario.Fecha }}</td>
+                <td>{{ comentario.IDComentario }}</td>
+                <td>{{ comentario.IDCientifico }}</td>
+                <td>{{ comentario.Editado }}</td>
+                
+                    <td>
+                        <form action="../editarcomentario.php" method="POST">
+                            <input type="hidden" name="idComentario" value="{{ comentario.IDComentario }}">
+                            <textarea name="textoEditado" placeholder="Editar comentario">{{ comentario.Texto }}</textarea>
+                            <button type="submit">Editar</button>
+                        </form>
+
+                        <form action="../borrarcomentario.php" method="POST">
+                            <input type="hidden" name="idComentario" value="{{ comentario.IDComentario }}">
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>
+                        </form>
+                    </td>
+                
+            </tr><br>
+        {% endfor %}
+    </table>
+</body>
+</main>
+{% endblock %}
+
+{% block botones %}   
+     <div class="boton">
+         <a href="." class="subrayado">Mi cuenta</a>
+    </div>
+{% endblock %}

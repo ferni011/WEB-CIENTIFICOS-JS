@@ -1,0 +1,306 @@
+/*Reglas para el cuerpo de la web */
+body {
+    border: 4px solid #050503;
+    /*Borde de la pagina en negro*/
+    border-radius: 1vh;
+    /*Para redondear las esquinas*/
+    font-family: 'Courier New', Courier, monospace;
+    /*Fuente de la página*/
+    background-color: white;
+    /*Color del fondo*/
+}
+
+
+
+/*Reglas para las imagenes*/
+img {
+    width: 100%;
+    /*Ancho*/
+    height: 100%;
+    /*Alto*/
+    object-fit: contain;
+    /*Para que quepa la imagen*/
+}
+
+/*Reglas para la información de contacto,ponemos la fuente en negrita*/
+address {
+    font-weight: bold;
+}
+
+/*Reglas para el pie de página*/
+footer {
+    /*Centramos el texto y ponemos el color deseado*/
+    text-align: center;
+    background-color: #3e8c22;
+}
+
+/*Reglas para el lateral de la web*/
+aside {
+    /*Usamos el grid*/
+    display: grid;
+    /*Hacemos que haya una sola fila*/
+    grid-template-rows: max-content;
+    /*Creamos bordes para la web*/
+    border-bottom: solid 2px #050503;
+    border-top: solid 2px #050503;
+    border-left: solid 2px #050503;
+    /*Color elegido*/
+    background-color: #31d331;
+    width: auto;
+    text-align: center;
+}
+
+/*Reglas para h1*/
+h1 {
+    /*Color negro*/
+    color: #050503;
+    /*Centramos el texto*/
+    text-align: center;
+    /*Tamaño de fuente y en negrita*/
+    font-size: 60px;
+    font-weight: bold;
+    /*Agrega una sombra de texto con un desplazamiento horizontal de 8 píxeles, un desplazamiento vertical de 5 píxeles y un radio de desenfoque de 10 píxeles */
+    text-shadow: 8px 5px 10px gray;
+    /* margen superior interno del 3% del ancho del contenedor */
+    padding-top: 3%;
+    /* margen derecho interno del 14% del ancho del contenedor */
+    padding-right: 14%;
+}
+
+h2{
+        /*Color negro*/
+        color: #050503;
+        text-align: center;
+        /*Tamaño de fuente y en negrita*/
+        font-size: 40px;
+        font-weight: bold;
+
+}
+
+/* Estilo del encabezado de la página para dispositivos móviles */
+@media (max-width: 968px) {
+    h1 {
+        font-size: 32px;
+
+    }
+}
+
+/*Reglas para la cabecera de la página*/
+header {
+    /*Color verde*/
+    background-color: #31d331;
+    /*Usamos grid*/
+    display: grid;
+    /*Definimos una sola columna con ancho máximo*/
+    grid-template-columns: repeat(1, 1fr);
+    /*Definimos una sola fila con altura fija de 20vh*/
+    grid-template-rows: 20vh;
+}
+
+
+/*Definimos normas para principal*/
+#principal {
+    /*Usamos un grid*/
+    display: grid;
+    /*Se ocupa el ancho máximo*/
+    grid-template-columns: 100%;
+    /*Color de fondo*/
+    background-color: white;
+    /*Bordes*/
+    border-bottom: solid 2px #050503;
+    border-top: solid 2px #050503;
+    height: min-content;
+}
+
+/*Reglas para main*/
+main {
+
+    /*Espacio de 2vh*/
+    gap: 2vh;
+    /*Alineamos el texto al centro*/
+    text-align: center;
+    /*Margen de 4em*/
+    padding: 4em;
+    /*Color blanco de fondo*/
+    background-color: white;
+    /*Redondeamos el borde*/
+    border-radius: 0.5vh;
+    /*Definimos un borde sólido negro*/
+    border-bottom: solid 2px #050503;
+
+
+
+}
+
+
+/*Normas para enlaces de interes*/
+.enlacesdeinteres {
+    /*Texto centrado*/
+    text-align: center;
+    /*Margen de 2em*/
+    padding: 2%;
+    /*Borde de la web*/
+    border-bottom: solid 2px #050503;
+    /*Color de fondo*/
+    background-color: white;
+    /*Tamaño de la fuente y negrita*/
+    font-size: large;
+    font-weight: bold;
+}
+
+/*Normas para el grid-container*/
+.grid-container {
+    /*Usamos grid*/
+    display: grid;
+    /*Dividimos el espacio de la pagina para darle un tamaño a la barra lateral y otro a la parte de los cientificos*/
+    grid-template-columns: 1fr 20%;
+}
+
+
+/*Normas para el contenedor de los enlaces de interes*/
+.lateralinteres {
+    /*Usamos grid*/
+    display: grid;
+    grid-template-rows: auto;
+    grid-auto-columns: 100%;
+}
+
+/*Normas para enlace*/
+#enlace {
+    /*Usamos grid*/
+    display: grid;
+    /*Hacemos que haya 8 enlaces de interes por cada columna*/
+    grid-template-rows: repeat(8, 15vh);
+    /*Centramos texto y contenido*/
+    align-items: center;
+    text-align: center;
+}
+
+/*Normas para contenido*/
+.contenido {
+    /*Espacio a la derecha de 0.5em*/
+    padding-right: 0.5em;
+    text-align: center;
+}
+
+/*Normas para los botones*/
+#botones {
+    /*Usamos grid*/
+    display: grid;
+    /*Dividimos las columnas en 4, ya que tenemos 4 botones*/
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 16vw);
+    /*Usamos unos margenes*/
+    margin-left: 5em;
+    margin-right: 3em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    /*Usamos espacio de 2.5em*/
+    padding-top: 2.5em;
+    /*Mayor fuente de letra y en negrita*/
+    font-weight: bold;
+    font-size: large;
+}
+
+/*Normas para el logo*/
+#logo {
+    /*Ponemos la foto a la izquierda*/
+    float: left;
+    /*Le damos una altura a la foto*/
+    height: 20vh;
+    /*Dejamos espacio superior y por la izquierda*/
+    padding-top: 1em;
+    padding-left: 2.5em;
+}
+
+/*Normas para subrayado*/
+.subrayado {
+    /*Nos sirve para quitar el color y el subrayado a los enlaces*/
+    color: #050503;
+    text-decoration: none;
+}
+
+/*Normas para el boton*/
+.boton {
+    /*Le damos una sombra al boton*/
+    box-shadow: 0 2px 5px #050503;
+    /*Le damos un color y centramos el texto*/
+    background-color: #3e8c22;
+    text-align: center;
+    height: 20px;
+}
+
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0;
+}
+
+li {
+    color: #050503;
+}
+
+/* No mostramos el resultados container si no escribimos nada*/
+#resultadosContainer {
+    display: none;
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #cccccc; /* Borde */
+    padding: 10px;
+  }
+  
+  #resultadosContainer a {
+    display: block; /* Mostrar los enlaces en bloques separados */
+    margin-bottom: 5px; /* Espacio entre los enlaces */
+    color: #000000; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+  }
+  
+  #resultadosContainer a:hover {
+    text-decoration: underline; /* Subrayado al pasar el cursor por encima */
+  }
+  
+  .botonesbarra{
+        display: grid;
+        grid-template-columns: repeat(2,0.6fr);
+        column-gap: 0vw;
+
+  }
+
+  .barra{
+    margin-top: 6vh;
+  }
+  
