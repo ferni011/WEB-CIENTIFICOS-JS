@@ -9,7 +9,7 @@ Esta es una aplicación web sobre científicos con las siguientes funcionalidade
 - Validación de datos que se guardan en el servidor PHP para evitar inyección de código, etc.
 - Existen distintos roles de usuarios: anónimo, registrado, moderador, gestor, superusuario.
 - Los usuarios pueden editar su información personal.
-- Se hace uso de AJAX para las búsquedas (o una tecnología basada en JavaScript similar). El paso de información entre el servidor y JavaScript se hará en formato XML o JSON.
+- Se hace uso de AJAX para las búsquedas.
 
 ## Requisitos
 
